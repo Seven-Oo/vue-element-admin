@@ -1,54 +1,58 @@
 <template>
   <el-row :gutter="40" class="panel-group">
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
-        <div class="card-panel-icon-wrapper icon-people">
-          <svg-icon icon-class="peoples" class-name="card-panel-icon" />
+    <el-col :xs="12" :sm="12" :lg="5" class="card-panel-col">
+      <div class="card-panel">
+        <div class="card-panel-date">2019-12-02 9:9更新</div>
+        <div class="card-panel-body">
+          <div class="card-panel-description">我的成绩</div>
+          <div class="card-panel-result">95分</div>
         </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            New Visits
-          </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
-        </div>
-      </div>
-    </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('messages')">
-        <div class="card-panel-icon-wrapper icon-message">
-          <svg-icon icon-class="message" class-name="card-panel-icon" />
-        </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            Messages
-          </div>
-          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" />
+        <div class="card-panel-bottom">
+          <div class="card-panel-info">位次在<span class="card-panel-num">前10%</span>，继续保持~</div>
         </div>
       </div>
     </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('purchases')">
-        <div class="card-panel-icon-wrapper icon-money">
-          <svg-icon icon-class="money" class-name="card-panel-icon" />
+    <el-col :xs="12" :sm="12" :lg="5" class="card-panel-col">
+      <div class="card-panel">
+        <div class="card-panel-date" />
+        <div class="card-panel-body">
+          <div class="card-panel-description">任务完成度</div>
+          <div class="card-panel-result">90%</div>
         </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            Purchases
-          </div>
-          <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />
+        <div class="card-panel-bottom">
+          <div class="card-panel-info">位次在<span class="card-panel-num">前10%</span>，继续保持~</div>
         </div>
       </div>
     </el-col>
-    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('shoppings')">
-        <div class="card-panel-icon-wrapper icon-shopping">
-          <svg-icon icon-class="shopping" class-name="card-panel-icon" />
+    <el-col :xs="12" :sm="12" :lg="5" class="card-panel-col">
+      <div class="card-panel">
+        <div class="card-panel-date" />
+        <div class="card-panel-body">
+          <div class="card-panel-description">收到预警</div>
+          <div class="card-panel-result">5条</div>
         </div>
-        <div class="card-panel-description">
-          <div class="card-panel-text">
-            Shoppings
-          </div>
-          <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
+        <div class="card-panel-bottom">
+          <div class="card-panel-info">预警严重程度4星</div>
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="5" class="card-panel-col">
+      <div class="card-panel">
+        <div class="card-panel-date" />
+        <div class="card-panel-body">
+          <div class="card-panel-description">我的学习报告</div>
+          <div class="card-panel-result" />
+        </div>
+        <div class="card-panel-bottomDate">
+          <div class="card-panel-calendar" />
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="4" class="card-panel-col">
+      <div class="card-panel">
+        <div class="card-panel-studyStyle">
+          <div class="card-panel-title">我的学习风格</div>
+          <div class="card-panel-browse">查看</div>
         </div>
       </div>
     </el-col>
@@ -56,16 +60,14 @@
 </template>
 
 <script>
-import CountTo from 'vue-count-to'
+// import CountTo from 'vue-count-to'
 
 export default {
   components: {
-    CountTo
+
   },
   methods: {
-    handleSetLineChartData(type) {
-      this.$emit('handleSetLineChartData', type)
-    }
+
   }
 }
 </script>
@@ -80,7 +82,6 @@ export default {
 
   .card-panel {
     height: 108px;
-    cursor: pointer;
     font-size: 12px;
     position: relative;
     overflow: hidden;
@@ -89,74 +90,60 @@ export default {
     box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
     border-color: rgba(0, 0, 0, .05);
 
-    &:hover {
-      .card-panel-icon-wrapper {
-        color: #fff;
+    .card-panel-date {
+      height: 12px;
+      text-align: right;
+      font-size: 10px;
+    }
+
+    .card-panel-body {
+      height: 80px;
+      line-height: 80px;
+      .card-panel-description {
+        float: left;
+        width: 40%;
+        font-size: 14px;
+        text-align: center;
       }
 
-      .icon-people {
-        background: #40c9c6;
-      }
-
-      .icon-message {
-        background: #36a3f7;
-      }
-
-      .icon-money {
-        background: #f4516c;
-      }
-
-      .icon-shopping {
-        background: #34bfa3
+      .card-panel-result {
+        float: left;
+        width: 60%;
+        font-size: 24px;
       }
     }
 
-    .icon-people {
-      color: #40c9c6;
-    }
+    .card-panel-bottom {
+      text-align: center;
 
-    .icon-message {
-      color: #36a3f7;
-    }
+      .card-panel-info {
+        width: 100%;
+        font-size: 10px;
+        position: absolute;
+        bottom: 0;
 
-    .icon-money {
-      color: #f4516c;
-    }
-
-    .icon-shopping {
-      color: #34bfa3
-    }
-
-    .card-panel-icon-wrapper {
-      float: left;
-      margin: 14px 0 0 14px;
-      padding: 16px;
-      transition: all 0.38s ease-out;
-      border-radius: 6px;
-    }
-
-    .card-panel-icon {
-      float: left;
-      font-size: 48px;
-    }
-
-    .card-panel-description {
-      float: right;
-      font-weight: bold;
-      margin: 26px;
-      margin-left: 0px;
-
-      .card-panel-text {
-        line-height: 18px;
-        color: rgba(0, 0, 0, 0.45);
-        font-size: 16px;
-        margin-bottom: 12px;
-      }
-
-      .card-panel-num {
-        font-size: 20px;
+        .card-panel-num {
+          color: #f00;
+        }
       }
     }
+
+    .card-panel-bottomDate {
+
+      .card-panel-calendar {
+
+      }
+    }
+
+    .card-panel-studyStyle {
+        font-size: 14px;
+        text-align: center;
+
+      .card-panel-title{
+        margin: 36px 0 10px 0;
+      }
+    }
+
   }
 }
 

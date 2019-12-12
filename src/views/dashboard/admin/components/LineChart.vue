@@ -20,61 +20,58 @@ export default {
     },
     height: {
       type: String,
-      default: '350px'
+      default: '380px'
     },
     autoResize: {
       type: Boolean,
       default: true
-    },
-    chartData: {
-      type: Object,
-      required: true
     }
   },
   data() {
     return {
-      chart: null
+
     }
   },
-  watch: {
-    chartData: {
-      deep: true,
-      handler(val) {
-        this.setOptions(val)
-      }
-    }
-  },
+
   mounted() {
     this.$nextTick(() => {
       this.initChart()
     })
   },
-  beforeDestroy() {
-    if (!this.chart) {
-      return
-    }
-    this.chart.dispose()
-    this.chart = null
-  },
   methods: {
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
-      this.setOptions(this.chartData)
+      this.setOptions()
     },
-    setOptions({ expectedData, actualData } = {}) {
+    setOptions({ } = {}) {
       this.chart.setOption({
+        title: {
+          text: '我每天登录在线时长',
+          textStyle: {
+            color: '#333',
+            fontSize: 14
+          },
+          left: 10
+        },
         xAxis: {
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: ['12月9日', '12月10日', '12月11日', '12月12日', '12月13日', '12月14日', '12月15日'],
           boundaryGap: false,
+          axisTick: {
+            show: false
+          }
+        },
+        yAxis: {
+          type: 'value',
+          data: [0, 50, 100, 150, 200],
           axisTick: {
             show: false
           }
         },
         grid: {
           left: 10,
-          right: 10,
-          bottom: 20,
-          top: 30,
+          right: 40,
+          bottom: 50,
+          top: 40,
           containLabel: true
         },
         tooltip: {
@@ -84,32 +81,13 @@ export default {
           },
           padding: [5, 10]
         },
-        yAxis: {
-          axisTick: {
-            show: false
-          }
-        },
+
         legend: {
-          data: ['expected', 'actual']
+          data: ['在线时长', '平均在线时长', '最高登录时长'],
+          bottom: 10
         },
         series: [{
-          name: 'expected', itemStyle: {
-            normal: {
-              color: '#FF005A',
-              lineStyle: {
-                color: '#FF005A',
-                width: 2
-              }
-            }
-          },
-          smooth: true,
-          type: 'line',
-          data: expectedData,
-          animationDuration: 2800,
-          animationEasing: 'cubicInOut'
-        },
-        {
-          name: 'actual',
+          name: '在线时长',
           smooth: true,
           type: 'line',
           itemStyle: {
@@ -120,11 +98,53 @@ export default {
                 width: 2
               },
               areaStyle: {
-                color: '#f3f8ff'
+                color: '#fff'
               }
             }
           },
-          data: actualData,
+          smooth: false,
+          type: 'line',
+          data: [39, 54, 13, 79, 123, 25, 90],
+          animationDuration: 2800,
+          animationEasing: 'cubicInOut'
+        },
+        {
+          name: '平均在线时长',
+          smooth: false,
+          type: 'line',
+          itemStyle: {
+            normal: {
+              color: '#FF8C00',
+              lineStyle: {
+                color: '#FF8C00',
+                width: 2
+              },
+              areaStyle: {
+                color: '#fff'
+              }
+            }
+          },
+          data: [0, 82, 91, 154, 162, 140, 145],
+          animationDuration: 2800,
+          animationEasing: 'quadraticOut'
+        },
+        {
+          name: '最高登录时长',
+          smooth: false,
+          type: 'line',
+          itemStyle: {
+            normal: {
+              color: '#D3D3D3',
+              lineStyle: {
+                color: '#D3D3D3',
+                width: 2
+              },
+              areaStyle: {
+                color: '#fff'
+              }
+            }
+          },
+          data: [100, 120, 161, 134, 105, 160, 165],
           animationDuration: 2800,
           animationEasing: 'quadraticOut'
         }]
