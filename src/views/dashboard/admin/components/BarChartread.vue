@@ -48,7 +48,7 @@ export default {
 
       this.chart.setOption({
         title: {
-          text: '我的随堂签到',
+          text: '我的阅读任务进度',
           textStyle: {
             color: '#333',
             fontSize: 14
@@ -93,7 +93,7 @@ export default {
           axisTick: {
             show: false
           },
-          data: ['总签到', '正常出勤', '迟到', '缺勤'],
+          data: ['通知', '资源', '播课单元', '播课视频', '试题库试题', '资源(随堂教学)'],
           axisLine: {
             lineStyle: {
               color: '#ddd'
@@ -114,10 +114,11 @@ export default {
             normal: {
                 show: true,
                 position: 'right',
-                color: '#333'
+                color: '#333',
+                formatter: '{c}%'
             }
           },
-          data: [2, 5, 3, 7],
+          data: ['20', '5', '33', '70', '52', '95'],
           animationDuration,
           itemStyle: {
             color: '#FF8C00',

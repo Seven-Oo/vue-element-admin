@@ -11,7 +11,7 @@
       </el-col>
       <el-col :xs="24" :sm="24" :lg="7">
         <div class="chart-wrapper">
-          <pie-chart />
+          calendar
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :lg="7">
@@ -22,19 +22,32 @@
     </el-row>
 
     <el-row :gutter="32">
+      <el-col :xs="24" :sm="24" :lg="7">
+        <div class="chart-wrapper">
+          <bar-chartread />
+        </div>
+      </el-col>
       <el-col :xs="24" :sm="24" :lg="10">
         <div class="chart-wrapper">
-          <line-chart />
+          <line-chartreadinteract />
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :lg="7">
         <div class="chart-wrapper">
-          <pie-chart />
+          <radar-chart />
         </div>
       </el-col>
+    </el-row>
+
+    <el-row :gutter="32">
       <el-col :xs="24" :sm="24" :lg="7">
         <div class="chart-wrapper">
-          <bar-chart />
+          <bar-chartactivity />
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :lg="17">
+        <div class="chart-wrapper">
+          <pie-chartbehave />
         </div>
       </el-col>
     </el-row>
@@ -56,9 +69,14 @@
 <script>
 import PanelGroup from './components/PanelGroup'
 import LineChart from './components/LineChart'
+import LineChartreadinteract from './components/LineChartreadinteract'
 import RaddarChart from './components/RaddarChart'
 import PieChart from './components/PieChart'
 import BarChart from './components/BarChart'
+import BarChartread from './components/BarChartread'
+import BarChartactivity from './components/BarChartactivity'
+import RadarChart from './components/RadarChart'
+import PieChartbehave from './components/PieChartbehave'
 import TransactionTable from './components/TransactionTable'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
@@ -68,9 +86,14 @@ export default {
   components: {
     PanelGroup,
     LineChart,
+    LineChartreadinteract,
     RaddarChart,
     PieChart,
     BarChart,
+    BarChartread,
+    BarChartactivity,
+    RadarChart,
+    PieChartbehave,
     TransactionTable,
     TodoList,
     BoxCard
